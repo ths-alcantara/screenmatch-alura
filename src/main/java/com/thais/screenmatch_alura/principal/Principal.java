@@ -1,5 +1,6 @@
 package com.thais.screenmatch_alura.principal;
 
+import com.thais.screenmatch_alura.model.DadosEpisodio;
 import com.thais.screenmatch_alura.model.DadosSerie;
 import com.thais.screenmatch_alura.model.DadosTemporada;
 import com.thais.screenmatch_alura.service.ConsumoApi;
@@ -33,6 +34,14 @@ public class Principal {
 		}
 		temporadas.forEach(System.out::println);
 
+//        for (int i = 0; i < dados.totalTemporadas(); i++) {
+//            List<DadosEpisodio> episodiosTemporada = temporadas.get(i).episodios();
+//            for (int j = 0; j < episodiosTemporada.size(); j++) {
+//                System.out.println(episodiosTemporada.get(j).titulo());
+//
+//            }
+//        }
 
+        temporadas.forEach(t -> t.episodios().forEach(e -> System.out.println(e.titulo())));
     }
 }
