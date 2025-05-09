@@ -1,14 +1,12 @@
 package com.thais.screenmatch_alura.principal;
 
-import com.thais.screenmatch_alura.model.DadosEpisodio;
 import com.thais.screenmatch_alura.model.DadosSerie;
 import com.thais.screenmatch_alura.model.DadosTemporada;
-import com.thais.screenmatch_alura.model.Episodio;
+import com.thais.screenmatch_alura.model.Serie;
 import com.thais.screenmatch_alura.service.ConsumoApi;
 import com.thais.screenmatch_alura.service.ConverteDados;
 import java.util.*;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Principal {
 
@@ -80,8 +78,17 @@ public class Principal {
     }
 
     private void listarSeriesBuscadas(){
-        dadosSeries.forEach(System.out::println);
+        List<Serie> series = new ArrayList<>();
+        series = dadosSeries.stream()
+                        .map(d -> new Serie(d))
+                                .toList();
+        series.stream()
+                .sorted(Comparator.comparing(Serie::getGenero))
+                .forEach(System.out::println);
+
     }
+
+
 
 
 }
